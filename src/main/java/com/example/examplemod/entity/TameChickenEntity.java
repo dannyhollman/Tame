@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.example.examplemod.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
@@ -32,7 +32,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class ExampleEntity extends TameableEntity {
+public class TameChickenEntity extends TameableEntity {
 
 	private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS);
 	public float wingRotation;
@@ -42,7 +42,7 @@ public class ExampleEntity extends TameableEntity {
 	public float wingRotDelta = 1.0F;
 	public int timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
 
-	public ExampleEntity(EntityType<? extends ExampleEntity> type, World worldIn) {
+	public TameChickenEntity(EntityType<? extends TameChickenEntity> type, World worldIn) {
 		super(type, worldIn);
 		this.setTamed(false);
 	}
@@ -118,7 +118,7 @@ public class ExampleEntity extends TameableEntity {
 		this.playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15F, 1.0F);
 	}
 
-	public ExampleEntity createChild(AgeableEntity ageable) {
+	public TameChickenEntity createChild(AgeableEntity ageable) {
 		return null;
 	}
 

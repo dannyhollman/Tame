@@ -3,6 +3,9 @@ package com.example.examplemod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.example.examplemod.init.ExampleEntityInit;
+import com.example.examplemod.renderer.TameChickenRenderer;
+
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -17,7 +20,7 @@ public final class ClientEventSubscriber {
 	@SubscribeEvent
 	public static void onFMLClientSetupEvent(final FMLClientSetupEvent event) {
 
-		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.EXAMPLE_ENTITY.get(), ExampleRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.EXAMPLE_ENTITY.get(), TameChickenRenderer::new);
 		LOGGER.debug("Registered Entity Renderers");
 		};
 }

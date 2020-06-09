@@ -1,4 +1,7 @@
-package com.example.examplemod;
+package com.example.examplemod.renderer;
+
+import com.example.examplemod.entity.TameChickenEntity;
+import com.example.examplemod.model.TameChickenModel;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -8,26 +11,26 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ExampleRenderer extends MobRenderer<ExampleEntity, ExampleModel>
+public class TameChickenRenderer extends MobRenderer<TameChickenEntity, TameChickenModel>
 {
 
 	private static final ResourceLocation CHICKEN_TEXTURES = new ResourceLocation("textures/entity/chicken.png");
 
-	public ExampleRenderer(EntityRendererManager renderManagerIn) {
-		super(renderManagerIn, new ExampleModel(), 0.3F);
+	public TameChickenRenderer(EntityRendererManager renderManagerIn) {
+		super(renderManagerIn, new TameChickenModel(), 0.3F);
 	}
 
 	/**
 	 * Returns the location of an entity's texture.
 	 */
-	public ResourceLocation getEntityTexture(ExampleEntity entity) {
+	public ResourceLocation getEntityTexture(TameChickenEntity entity) {
 		return CHICKEN_TEXTURES;
 	}
 
 	/**
 	 * Defines what float the third param in setRotationAngles of ModelBase is
 	 */
-	protected float handleRotationFloat(ExampleEntity livingBase, float partialTicks) {
+	protected float handleRotationFloat(TameChickenEntity livingBase, float partialTicks) {
 		float f = MathHelper.lerp(partialTicks, livingBase.oFlap, livingBase.wingRotation);
 		float f1 = MathHelper.lerp(partialTicks, livingBase.oFlapSpeed, livingBase.destPos);
 		return (MathHelper.sin(f) + 1.0F) * f1;
