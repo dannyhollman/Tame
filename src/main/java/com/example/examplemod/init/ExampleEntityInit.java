@@ -4,6 +4,7 @@ import com.example.examplemod.ExampleMod;
 import com.example.examplemod.entity.TameBeeEntity;
 import com.example.examplemod.entity.TameChickenEntity;
 import com.example.examplemod.entity.TamePandaEntity;
+import com.example.examplemod.entity.TameTurtleEntity;
 
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -37,5 +38,12 @@ public class ExampleEntityInit {
 			EntityType.Builder.<TameBeeEntity>create(TameBeeEntity::new, EntityClassification.CREATURE)
 					.size(EntityType.BEE.getWidth(), EntityType.BEE.getHeight())
 					.build(new ResourceLocation(ExampleMod.MODID, TAME_BEE_NAME).toString())
+	);
+
+	public static final String TAME_TURTLE_NAME = "tame_turtle_entity";
+	public static final RegistryObject<EntityType<TameTurtleEntity>> TAME_TURTLE_ENTITY = ENTITY_TYPES.register(TAME_TURTLE_NAME, () ->
+			EntityType.Builder.<TameTurtleEntity>create(TameTurtleEntity::new, EntityClassification.CREATURE)
+					.size(EntityType.TURTLE.getWidth(), EntityType.TURTLE.getHeight())
+					.build(new ResourceLocation(ExampleMod.MODID, TAME_TURTLE_NAME).toString())
 	);
 }

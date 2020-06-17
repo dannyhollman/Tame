@@ -1,5 +1,7 @@
 package com.example.examplemod.entity;
 
+import com.example.examplemod.init.ExampleEntityInit;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntitySize;
@@ -23,6 +25,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvent;
@@ -31,6 +34,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class TameChickenEntity extends TameableEntity {
 
@@ -47,6 +51,12 @@ public class TameChickenEntity extends TameableEntity {
 		this.setTamed(false);
 	}
 
+
+	public IPacket<?> createSpawnPacket()
+	{
+		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+	
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.4D));
@@ -166,7 +176,7 @@ public class TameChickenEntity extends TameableEntity {
 		if (itemstack.getItem() instanceof SpawnEggItem) {
 			return super.processInteract(player, hand);
 		} else if (this.world.isRemote) {
-			return this.isOwner(player) || item == Items.BONE;
+			return this.isOwner(player);
 		} else {
 			if (!this.isTamed()) {
 				if (!player.abilities.isCreativeMode) {
