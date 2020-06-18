@@ -16,7 +16,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod("examplemod")
 public class ExampleMod
 {
-	public static ExampleMod instance;
 	public static final String MODID = "examplemod";
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
 	
@@ -24,15 +23,6 @@ public class ExampleMod
 	{
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		ExampleEntityInit.ENTITY_TYPES.register(modEventBus);	
+		ExampleEntityInit.ENTITY_TYPES.register(modEventBus);
 	}
-	
-	/*
-    private void setup(final FMLCommonSetupEvent event) {
-
-    	MinecraftForge.EVENT_BUS.register(new ForgeEventSubscriber());
-        LOGGER.info("Setup method registered.");
-    }
-	*/
-	
 }

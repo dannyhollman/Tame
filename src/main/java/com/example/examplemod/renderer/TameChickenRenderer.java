@@ -10,14 +10,14 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
-public class TameChickenRenderer extends MobRenderer<TameChickenEntity, TameChickenModel>
+//@OnlyIn(Dist.CLIENT)
+public class TameChickenRenderer extends MobRenderer<TameChickenEntity, TameChickenModel<TameChickenEntity>>
 {
 
 	private static final ResourceLocation CHICKEN_TEXTURES = new ResourceLocation("textures/entity/chicken.png");
 
 	public TameChickenRenderer(EntityRendererManager renderManagerIn) {
-		super(renderManagerIn, new TameChickenModel(), 0.3F);
+		super(renderManagerIn, new TameChickenModel<>(), 0.3F);
 	}
 
 	/**

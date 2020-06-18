@@ -11,6 +11,7 @@ import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.PandaEntity;
 import net.minecraft.entity.passive.TurtleEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -22,25 +23,32 @@ public class ForgeEventSubscriber {
     public static void onEntityJoinWorld (EntityJoinWorldEvent event) {
 
         final Entity entity = event.getEntity();     
+        final World world = event.getWorld();     
+        final boolean loaded = world.getChunkProvider().isChunkLoaded(entity);
 
-        if (entity instanceof ChickenEntity)
+
+        if (entity instanceof ChickenEntity && loaded)
         {
+        	ExampleMod.LOGGER.info("Chicken found");
+
         	entity.remove();
-        
-        	TameChickenEntity chicken = new TameChickenEntity(ExampleEntityInit.TAME_CHICKEN_ENTITY.get(), event.getWorld());
-        	
+
+        	TameChickenEntity chicken = new TameChickenEntity(ExampleEntityInit.TAME_CHICKEN_ENTITY.get(), world);
+
         	chicken.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
-        	
-        	event.getWorld().addEntity(chicken);     
-        	
+
+        	event.getWorld().addEntity(chicken);
+
         	ExampleMod.LOGGER.info("CHICKEN REPLACED! :D");
         }
-    
-        else if (entity instanceof PandaEntity)
+
+        else if (entity instanceof PandaEntity && loaded)
         {
+        	ExampleMod.LOGGER.info("Panda found");
+        	
         	entity.remove();
         	
-        	TamePandaEntity panda = new TamePandaEntity(ExampleEntityInit.TAME_PANDA_ENTITY.get(), event.getWorld());
+        	TamePandaEntity panda = new TamePandaEntity(ExampleEntityInit.TAME_PANDA_ENTITY.get(), world);
         	
         	panda.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
         	
@@ -49,11 +57,13 @@ public class ForgeEventSubscriber {
         	ExampleMod.LOGGER.info("PANDA REPLACED! :D");
         }
         
-        else if (entity instanceof BeeEntity)
+        else if (entity instanceof BeeEntity && loaded)
         {
+        	ExampleMod.LOGGER.info("Bee found");
+        	
         	entity.remove();
         	
-        	TameBeeEntity bee = new TameBeeEntity(ExampleEntityInit.TAME_BEE_ENTITY.get(), event.getWorld());
+        	TameBeeEntity bee = new TameBeeEntity(ExampleEntityInit.TAME_BEE_ENTITY.get(), world);
         	
         	bee.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
         	
@@ -62,11 +72,13 @@ public class ForgeEventSubscriber {
         	ExampleMod.LOGGER.info("BEE REPLACED! :D");
         }
         
-        else if (entity instanceof TurtleEntity)
+        else if (entity instanceof TurtleEntity && loaded)
         {
+        	ExampleMod.LOGGER.info("Turtle found");
+        	
         	entity.remove();
         	
-        	TameTurtleEntity turtle = new TameTurtleEntity(ExampleEntityInit.TAME_TURTLE_ENTITY.get(), event.getWorld());
+        	TameTurtleEntity turtle = new TameTurtleEntity(ExampleEntityInit.TAME_TURTLE_ENTITY.get(), world);
         	
         	turtle.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
         	

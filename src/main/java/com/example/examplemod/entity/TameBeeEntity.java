@@ -131,7 +131,7 @@ public class TameBeeEntity extends TameableEntity implements IFlyingAnimal {
 		if (itemstack.getItem() instanceof SpawnEggItem) {
 			return super.processInteract(player, hand);
 		} else if (this.world.isRemote) {
-			return this.isOwner(player) || item == Items.BONE;
+			return this.isOwner(player);
 		} else {
 			if (!this.isTamed()) {
 				if (!player.abilities.isCreativeMode) {

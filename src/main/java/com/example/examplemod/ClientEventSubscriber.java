@@ -11,6 +11,8 @@ import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
+import net.minecraft.client.renderer.entity.ChickenRenderer;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -29,9 +31,8 @@ public final class ClientEventSubscriber {
 		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.TAME_PANDA_ENTITY.get(),  TamePandaRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.TAME_BEE_ENTITY.get(), TameBeeRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.TAME_TURTLE_ENTITY.get(),  TameTurtleRenderer::new);
-		
-		//EntitySpawnPlacementRegistry.register(ExampleEntityInit.TAME_CHICKEN_ENTITY.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::canAnimalSpawn);
-		ExampleMod.LOGGER.debug("Registered Entity Renderers");
+
+		ExampleMod.LOGGER.info("Registered Entity Renderers");
 		
 		/*
 		DeferredWorkQueue.runLater(() -> {

@@ -1,6 +1,5 @@
 package com.example.examplemod.entity;
 
-import com.example.examplemod.init.ExampleEntityInit;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
@@ -79,10 +78,6 @@ public class TameChickenEntity extends TameableEntity {
 		this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
 	}
 
-	/**
-	 * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-	 * use this to react to sunlight and start to burn.
-	 */
 	public void livingTick() {
 		super.livingTick();
 		this.oFlap = this.wingRotation;
@@ -132,17 +127,10 @@ public class TameChickenEntity extends TameableEntity {
 		return null;
 	}
 
-	/**
-	 * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-	 * the animal type)
-	 */
 	public boolean isBreedingItem(ItemStack stack) {
 		return TEMPTATION_ITEMS.test(stack);
 	}
 
-	/**
-	 * (abstract) Protected helper method to read subclass entity data from NBT.
-	 */
 	public void readAdditional(CompoundNBT compound) {
 		super.readAdditional(compound);
 		if (compound.contains("EggLayTime")) {
@@ -157,7 +145,7 @@ public class TameChickenEntity extends TameableEntity {
 	}
 
 	public boolean canDespawn(double distanceToClosestPlayer) {
-		return false;
+		return true;
 	}
 
 	public void setTamed(boolean tamed) {
