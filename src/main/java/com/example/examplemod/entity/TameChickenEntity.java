@@ -145,7 +145,7 @@ public class TameChickenEntity extends TameableEntity {
 	}
 
 	public boolean canDespawn(double distanceToClosestPlayer) {
-		return true;
+		return !this.isTamed();
 	}
 
 	public void setTamed(boolean tamed) {

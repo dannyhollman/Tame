@@ -2,21 +2,27 @@ package com.example.examplemod;
 
 import com.example.examplemod.entity.TameBeeEntity;
 import com.example.examplemod.entity.TameChickenEntity;
+import com.example.examplemod.entity.TameCowEntity;
+import com.example.examplemod.entity.TameFoxEntity;
 import com.example.examplemod.entity.TamePandaEntity;
+import com.example.examplemod.entity.TamePigEntity;
 import com.example.examplemod.entity.TameTurtleEntity;
 import com.example.examplemod.init.ExampleEntityInit;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.CowEntity;
+import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.passive.PandaEntity;
+import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid = ExampleMod.MODID, bus = EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = TameMod.MODID, bus = EventBusSubscriber.Bus.FORGE)
 public class ForgeEventSubscriber {
 
     @SubscribeEvent
@@ -29,7 +35,7 @@ public class ForgeEventSubscriber {
 
         if (entity instanceof ChickenEntity && loaded)
         {
-        	ExampleMod.LOGGER.info("Chicken found");
+        	TameMod.LOGGER.info("Chicken found");
 
         	entity.remove();
 
@@ -39,12 +45,12 @@ public class ForgeEventSubscriber {
 
         	event.getWorld().addEntity(chicken);
 
-        	ExampleMod.LOGGER.info("CHICKEN REPLACED! :D");
+        	TameMod.LOGGER.info("CHICKEN REPLACED! :D");
         }
 
         else if (entity instanceof PandaEntity && loaded)
         {
-        	ExampleMod.LOGGER.info("Panda found");
+        	TameMod.LOGGER.info("Panda found");
         	
         	entity.remove();
         	
@@ -54,12 +60,12 @@ public class ForgeEventSubscriber {
         	
         	event.getWorld().addEntity(panda);
         	
-        	ExampleMod.LOGGER.info("PANDA REPLACED! :D");
+        	TameMod.LOGGER.info("PANDA REPLACED! :D");
         }
         
         else if (entity instanceof BeeEntity && loaded)
         {
-        	ExampleMod.LOGGER.info("Bee found");
+        	TameMod.LOGGER.info("Bee found");
         	
         	entity.remove();
         	
@@ -69,12 +75,12 @@ public class ForgeEventSubscriber {
         	
         	event.getWorld().addEntity(bee);
         	
-        	ExampleMod.LOGGER.info("BEE REPLACED! :D");
+        	TameMod.LOGGER.info("BEE REPLACED! :D");
         }
         
         else if (entity instanceof TurtleEntity && loaded)
         {
-        	ExampleMod.LOGGER.info("Turtle found");
+        	TameMod.LOGGER.info("Turtle found");
         	
         	entity.remove();
         	
@@ -84,7 +90,52 @@ public class ForgeEventSubscriber {
         	
         	event.getWorld().addEntity(turtle);
         	
-        	ExampleMod.LOGGER.info("TURTLE REPLACED! :D");
+        	TameMod.LOGGER.info("TURTLE REPLACED! :D");
+        }
+        
+        else if (entity instanceof CowEntity && loaded)
+        {
+        	TameMod.LOGGER.info("Cow found");
+        	
+        	entity.remove();
+        	
+        	TameCowEntity cow = new TameCowEntity(ExampleEntityInit.TAME_COW_ENTITY.get(), world);
+        	
+        	cow.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
+        	
+        	event.getWorld().addEntity(cow);
+        	
+        	TameMod.LOGGER.info("COW REPLACED! :D");
+        }
+        
+        else if (entity instanceof FoxEntity && loaded)
+        {
+        	TameMod.LOGGER.info("Fox found");
+        	
+        	entity.remove();
+        	
+        	TameFoxEntity fox = new TameFoxEntity(ExampleEntityInit.TAME_FOX_ENTITY.get(), world);
+        	
+        	fox.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
+        	
+        	event.getWorld().addEntity(fox);
+        	
+        	TameMod.LOGGER.info("FOX REPLACED! :D");
+        }
+        
+        else if (entity instanceof PigEntity && loaded)
+        {
+        	TameMod.LOGGER.info("Pig found");
+        	
+        	entity.remove();
+        	
+        	TamePigEntity pig = new TamePigEntity(ExampleEntityInit.TAME_PIG_ENTITY.get(), world);
+        	
+        	pig.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
+        	
+        	event.getWorld().addEntity(pig);
+        	
+        	TameMod.LOGGER.info("PIG REPLACED! :D");
         }
     }
 }
