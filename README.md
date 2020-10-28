@@ -28,3 +28,6 @@ Ever wanted to have more pets in Minecraft? Now you can! Tame turns passive mobs
 
 #### The Story
 I've been a fan of Minecraft for a long time and always wished the game had a larger variety of pets to tame.  I started this project as a fun way to start learning Java. The biggest challenge of this project was figuring out how to spawn entities after changes to the Forge API.
+
+#### Author
+Danny Hollman [Github](https://github.com/dannyhollman) [LinkedIn](https://www.linkedin.com/in/danny-hollman-609664189) [Twitter](https://twitter.com/danny_hollman)
