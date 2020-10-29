@@ -22,7 +22,7 @@ public final class ClientEventSubscriber {
 
 	@SubscribeEvent
 	public static void onFMLClientSetupEvent(final FMLClientSetupEvent event) {
-
+		// Register the entity renderers
 		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.TAME_CHICKEN_ENTITY.get(), TameChickenRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.TAME_PANDA_ENTITY.get(),  TamePandaRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ExampleEntityInit.TAME_BEE_ENTITY.get(), TameBeeRenderer::new);
