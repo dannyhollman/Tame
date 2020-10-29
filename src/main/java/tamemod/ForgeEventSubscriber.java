@@ -21,7 +21,7 @@ public class ForgeEventSubscriber {
 
 		final Entity entity = event.getEntity();     
 		final World world = event.getWorld();
-
+		// Stop spawns for untamed mobs
 		if (entity instanceof ChickenEntity || 
 				entity instanceof BeeEntity || 
 				entity instanceof CowEntity || 
