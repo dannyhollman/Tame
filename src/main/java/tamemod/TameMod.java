@@ -18,13 +18,14 @@ public class TameMod
 	
 	public TameMod() 
 	{
+		// Get Mod Event Bus
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+		// Register entities
 		ExampleEntityInit.ENTITY_TYPES.register(modEventBus);
-		
+		// Listen for OnLoadSpawns
 		modEventBus.addListener(this::OnLoadSpawns);
 	}
-	
+	// Register entity spawns
 	private void OnLoadSpawns (FMLCommonSetupEvent event) {
 		RegisterEntitySpawns.spawnMobs();
 		TameMod.LOGGER.info("entity spawns loaded");
