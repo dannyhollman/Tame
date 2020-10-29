@@ -8,7 +8,7 @@ import tamemod.init.ExampleEntityInit;
 public class RegisterEntitySpawns {
 
 	public static void spawnMobs() {
-
+		// Add spawns for tame mobs in each biome
 		ForgeRegistries.BIOMES.getValues().stream()
 		.filter(biome -> biome.getRegistryName().toString().contains("field")
 				|| biome.getRegistryName().toString().contains("taiga")
